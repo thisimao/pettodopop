@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil Pet</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, cyan, yellow);
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+            text-align: center;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+        }
+
+        .logo {
+            width: 120px;
+            height: auto;
+        }
+
+        .post-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            overflow: hidden;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+            padding: 20px;
+        }
+
+        .post img {
+            max-width: 100px;
+            height: auto;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .post-message,
+        .post-date,
+        .post-location {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+
+        @media (max-width: 600px) {
+            .logo {
+                width: 100px;
+            }
+
+            .post-container {
+                width: 100%;
+                padding: 10px;
+            }
+
+            .post img {
+                max-width: 80px;
+            }
+
+            footer {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="logo.png" alt="Logo" class="logo">
+    </header>
+
+    <div class="post-container">
+        <!-- Dados da postagem -->
+        <div class="post">
+            <img src="" alt="Foto do Pet" id="previewImage">
+            <p class="post-message" id="mensagem"></p>
+            <p class="post-date" id="dataNascimento"></p>
+            <p class="post-location" id="localizacao"></p>
+        </div>
+    </div>
+
+    <footer>
+        Rodapé - Conteúdo do Rodapé aqui.
+    </footer>
+
+    <script>
+        // Recuperar dados do sessionStorage
+        const mensagem = sessionStorage.getItem('mensagem');
+        const dataNascimento = sessionStorage.getItem('dataNascimento');
+        const localizacao = sessionStorage.getItem('localizacao');
+        const imagem = sessionStorage.getItem('imagem');
+
+        // Atualizar elementos na página
+        window.onload = function () {
+            const mensagemElement = document.getElementById('mensagem');
+            const dataNascimentoElement = document.getElementById('dataNascimento');
+            const localizacaoElement = document.getElementById('localizacao');
+            const imagemElement = document.getElementById('previewImage');
+
+            if (mensagemElement && mensagem) {
+                mensagemElement.innerText = mensagem;
+            }
+
+            if (dataNascimentoElement && dataNascimento) {
+                dataNascimentoElement.innerText = `Data de Nascimento: ${dataNascimento}`;
+            }
+
+            if (localizacaoElement && localizacao) {
+                localizacaoElement.innerText = `Localização: ${localizacao}`;
+            }
+
+            if (imagemElement && imagem) {
+                imagemElement.src = imagem;
+            }
+        };
+    </script>
+
+</body>
+
+</html>

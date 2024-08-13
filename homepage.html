@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, cyan, yellow);
+            background-size: cover;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        #menuIcon {
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 3;
+        }
+
+        #sideMenu {
+            width: 250px;
+            background-color: rgba(0, 0, 0, 0.9);
+            position: fixed;
+            height: 100%;
+            overflow-x: hidden;
+            padding-top: 20px;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 1;
+        }
+
+        #sideMenu.open {
+            transform: translateX(0);
+        }
+
+        nav a {
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: flex;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        nav a i {
+            margin-right: 10px;
+        }
+
+        nav a:hover {
+            background-color: rgb(195, 72, 181);
+            color: black;
+        }
+
+        .submenu-container {
+            position: relative;
+        }
+
+        .submenu-container:hover .submenu {
+            display: block;
+        }
+
+        .submenu {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.9);
+            width: 250px;
+            padding-top: 20px;
+            position: absolute;
+            top: 0;
+            left: 250px;
+            height: 100%;
+            z-index: 2;
+        }
+
+        .submenu a {
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .submenu a:hover {
+            background-color: rgb(195, 72, 181);
+            color: black;
+        }
+
+        .banner {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin: 20px auto;
+            border-radius: 10px;
+            max-width: 600px;
+        }
+
+        .banner a {
+            text-decoration: none;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .banner a:hover {
+            color: rgb(195, 72, 181);
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <span id="menuIcon" class="fas fa-bars"></span>
+        <img src="logo.png" width="150px" height="150px" alt="Logo">
+    </header>
+
+    <nav id="sideMenu">
+        <a href="#"><i class="fas fa-home"></i> Home</a>
+        <a href="cadastro.html"><i class="fas fa-pencil-alt"></i> Cadastro</a>
+        <a href="index.html"><i class="fas fa-paw"></i> Login</a>
+        <a href="perfil_pet.html"><i class="fas fa-dog"></i> Perfil Pet</a>
+        <div class="submenu-container">
+            <a href="#"><i class="fas fa-cogs"></i> Nossos Serviços</a>
+            <div class="submenu">
+                <a href="#"><i class="fas fa-stethoscope"></i> Veterinário</a>
+                <a href="#"><i class="fas fa-bowl-food"></i> Alimentação Pet</a>
+                <a href="#"><i class="fas fa-scissors"></i> Estética Pet</a>
+                <a href="#"><i class="fas fa-map-marker-alt"></i> Encontre Pet Perdido</a>
+            </div>
+        </div>
+        <div class="submenu-container">
+            <a href="#"><i class="fas fa-briefcase"></i> Cadastro Prestador de Serviços</a>
+            <div class="submenu">
+                <a href="cadastro_veterinarios.html"><i class="fas fa-user-md"></i> Cadastro Veterinários</a>
+                <a href="cadastro_estetica.html"><i class="fas fa-cut"></i> Cadastro Banho e Tosa</a>
+                <a href="cadastro_alimentacao.html"><i class="fas fa-utensils"></i> Cadastro Alimentação Pet</a>
+            </div>
+        </div>
+        <a href="cadastro_pet.html"><i class="fas fa-paw"></i> Cadastro Pet</a>
+        <a href="encontrar_pet.html"><i class="fas fa-search"></i> Encontrar Pet</a>
+    </nav>
+
+    <div class="banner">
+        <a href="cadastro.html">Faça seu Cadastro Aqui!</a>
+    </div>
+
+    <footer>
+        Rodapé - Conteúdo do Rodapé aqui.
+    </footer>
+
+    <script>
+        const menuIcon = document.getElementById('menuIcon');
+        const sideMenu = document.getElementById('sideMenu');
+
+        menuIcon.addEventListener('click', function() {
+            sideMenu.classList.toggle('open');
+            menuIcon.style.display = sideMenu.classList.contains('open') ? 'none' : 'block';
+        });
+
+        // Ocultar ícone do menu quando o menu estiver aberto
+        sideMenu.addEventListener('click', function() {
+            menuIcon.style.display = 'block';
+        });
+    </script>
+
+</body>
+</html>

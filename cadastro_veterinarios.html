@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, cyan, yellow);
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            align-items: center;
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+        }
+
+        .profile-container {
+            margin-top: 30px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            overflow: hidden;
+            width: 80%;
+            max-width: 600px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            margin: auto;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 200px;
+            max-height: 200px;
+            border-bottom: 1px solid #ccc;
+            border-radius: 50%;
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
+
+        .post-section {
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .post-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: none;
+            font-size: 16px;
+        }
+
+        .post-btn {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+
+        .post-btn:hover {
+            background-color: rgb(195, 72, 181);
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                margin: 20px;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .profile-image {
+                width: 100px;
+                height: 100px;
+            }
+
+            .post-input {
+                font-size: 16px;
+            }
+
+            .post-btn {
+                padding: 10px;
+                font-size: 16px;
+            }
+
+            footer {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="logo.png" alt="Logo" width="150px" height="150px">
+    </header>
+
+    <div class="profile-container">
+        <img class="profile-image" id="previewImage" src="default-profile-image.jpg" alt="Profile Image">
+
+        <div class="post-section">
+            <textarea class="post-input" placeholder="Digite sua mensagem..." id="mensagem"></textarea>
+            <input type="file" accept="image/*, video/*" class="post-input" onchange="previewFile()">
+            <input type="text" class="post-input" placeholder="Raça do Pet" id="raca">
+            <input type="date" class="post-input" id="dataNascimento">
+            <input type="text" class="post-input" placeholder="Localização" id="localizacao">
+
+            <center><button class="post-btn" onclick="postar()">Postar</button></center>
+        </div>
+    </div>
+
+    <footer>
+        Rodapé - Conteúdo do Rodapé aqui.
+    </footer>
+
+    <script>
+        function postar() {
+            const mensagem = document.getElementById('mensagem').value;
+            const raca = document.getElementById('raca').value;
+            const dataNascimento = document.getElementById('dataNascimento').value;
+            const localizacao = document.getElementById('localizacao').value;
+
+            sessionStorage.setItem('mensagem', mensagem);
+            sessionStorage.setItem('raca', raca);
+            sessionStorage.setItem('dataNascimento', dataNascimento);
+            sessionStorage.setItem('localizacao', localizacao);
+
+            window.location.href = 'perfil_pronto.html';
+        }
+
+        function previewFile() {
+            const preview = document.getElementById('previewImage');
+            const fileInput = document.querySelector('input[type=file]');
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onloadend = function () {
+                preview.src = reader.result;
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                preview.src = "default-profile-image.jpg";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

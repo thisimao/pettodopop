@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login e Senha</title>
+    
+    <style>
+    body{
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(45deg, cyan,yellow);
+        width: 100vw;
+        height: 100vh;
+    }
+    div{
+        color: white;
+        background-color: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        padding: 80px;
+        border-radius: 15px;
+    }
+    input{
+        padding:15px;
+        border:none;
+        outline:none;
+        font-size:15px;
+    }
+    button
+    {
+        background-color: purple;
+        border:none;
+        padding:15px;
+        width:100%;
+        border-radius: 10px;
+        font-size: 15px;
+        color:white;
+    }
+    button:hover{
+        background-color: rgb(195, 72, 181);
+        cursor: pointer;
+    }
+    img{
+        margin-bottom: 10px;
+        align-items: center;
+    }
+    h4:hover{
+        cursor: pointer;
+        color:aquamarine;
+    }
+    </style>
+</head>
+<body>
+    <div>
+        <center><img src="logo.png" width="150 px" height="150 px"></center>
+        <input type ="text" placeholder="Login">
+        <br><br>
+        <input type="password" placeholder = "Senha">
+        <br><br>
+        <button onclick = "window.location.href='homepage.html'">Enviar</button>
+        <h4><a onclick="window.location.href = 'cadastro.html'">Ainda não possui cadastro?</a></h4>    
+    </div>
+</body>
+</html>
